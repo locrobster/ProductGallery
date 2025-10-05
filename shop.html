@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,25 +16,40 @@
       flex-direction: column;
       align-items: center;
     }
-
-    .banner {
+    
+  .banner {
+    width: 100%;
+    aspect-ratio: 1920 / 600;
+    position: relative;
+    background: url('mainbanner.jpg') center/cover no-repeat;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(180, 140, 255, 0.35);
+  }
+  .banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(160, 130, 255, 0.12);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 0 80px rgba(200, 160, 255, 0.4);
+  }
+  .banner img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    max-width: 1920px;
+    z-index: 2;
+  }
+  @media (max-width: 768px) {
+    .banner img {
       width: 100%;
-      height: 40vh;
-      min-height: 300px;
-      max-height: 500px;
-      background: url('mainbanner.jpg') center/cover no-repeat;
-      position: relative;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      height: auto;
     }
-
-    .banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
+  }
 
     .frosted-box {
       position: relative;
@@ -52,7 +66,6 @@
       width: min(90vw, 800px);
       color: #fff;
     }
-
     .back-btn {
       display: inline-block;
       margin-top: 40px;
@@ -69,44 +82,23 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       transition: all 0.3s ease;
     }
-
     .back-btn:hover {
       background: rgba(255, 255, 255, 0.35);
       transform: translateY(-4px);
       box-shadow: 0 8px 25px rgba(200, 150, 255, 0.4);
     }
-
-    .social-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin: 60px 0;
-    }
-
-    .social-card {
-      width: 444px;
-      height: 222px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    @media (max-width: 600px) {
-      .frosted-box { padding: 40px 20px; width: 90%; }
-      .social-card { width: 90%; height: 180px; }
-    }
   </style>
 </head>
 <body>
-  <div class="banner"></div>
-
+  <div class="banner">
+    <img src="bannerlogo.png" alt="Banner Logo">
+  </div>
+  
   <div class="frosted-box">
     <h1>Shop Coming Soon</h1>
     <p>Our online store will be available soon with exclusive designs and products.</p>
     <a href="index.html" class="back-btn">Back to Home</a>
   </div>
+
 </body>
 </html>

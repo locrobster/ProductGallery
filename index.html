@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -21,28 +20,39 @@
       scroll-behavior: smooth;
     }
 
-    /* Banner Section */
+    /* New Frosted Banner */
     .banner {
       width: 100%;
-      height: 40vh;
-      min-height: 300px;
-      max-height: 500px;
-      background: url('mainbanner.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      aspect-ratio: 1920 / 600;
       position: relative;
-      z-index: 1;
+      background: url('mainbanner.jpg') center/cover no-repeat;
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(180, 140, 255, 0.35);
     }
-
-    .banner::after {
+    .banner::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: rgba(160, 130, 255, 0.12);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      box-shadow: 0 0 80px rgba(200, 160, 255, 0.4);
+    }
+    .banner img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+      max-width: 1920px;
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .banner img {
+        width: 100%;
+        height: auto;
+      }
     }
 
     /* Frosted Button Container */
@@ -83,13 +93,11 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
     .frosted-btn svg {
       width: 22px;
       height: 22px;
       stroke-width: 2.5;
     }
-
     .frosted-btn:hover {
       background: rgba(255, 255, 255, 0.35);
       transform: translateY(-4px);
@@ -115,22 +123,8 @@
       width: min(90vw, 880px);
       height: min(90vh, 880px);
       overflow: hidden;
-      margin-top: 30px;
+      margin-top: 20px;
       z-index: 5;
-    }
-
-    .glass-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.05)),
-        radial-gradient(circle at 20% 20%, rgba(200,170,255,0.25), transparent 65%),
-        radial-gradient(circle at 80% 80%, rgba(255,220,255,0.15), transparent 70%);
-      mix-blend-mode: screen;
-      pointer-events: none;
-      z-index: 1;
     }
 
     .thumb {
@@ -142,7 +136,6 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.4);
       z-index: 2;
     }
-
     .thumb img {
       width: 100%;
       height: 100%;
@@ -150,17 +143,14 @@
       border-radius: inherit;
       transition: transform 0.3s ease;
     }
-
     .thumb:hover {
       transform: translateY(-6px) scale(1.02);
       box-shadow: 0 10px 20px rgba(0,0,0,0.6);
     }
-
     .thumb:hover img {
       transform: scale(1.05);
     }
 
-    /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
@@ -171,7 +161,6 @@
       justify-content: center;
       backdrop-filter: blur(10px);
     }
-
     .lightbox.active { display: flex; }
 
     .swiper {
@@ -179,20 +168,17 @@
       max-width: 1000px;
       height: 80%;
     }
-
     .swiper-slide {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
     .swiper-slide img {
       max-height: 100%;
       max-width: 100%;
       border-radius: 20px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
     }
-
     .close-btn {
       position: absolute;
       top: 20px;
@@ -204,11 +190,9 @@
       z-index: 1100;
       transition: transform 0.2s ease;
     }
-
     .close-btn:hover { transform: scale(1.2); }
 
     @media (max-width: 768px) {
-      .banner { height: 35vh; }
       .button-container {
         flex-direction: column;
         padding: 20px 25px;
@@ -232,7 +216,9 @@
 </head>
 <body>
   <!-- Banner -->
-  <div class="banner"></div>
+  <div class="banner">
+    <img src="bannerlogo.png" alt="Banner Logo">
+  </div>
 
   <!-- Frosted Buttons Container -->
   <div class="button-container">
@@ -249,7 +235,6 @@
     <div class="thumb" data-group="parker"><img src="ParkerSmall1_thumb.jpg" alt="Parker Thumbnail"></div>
   </div>
 
-  <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
     <span class="close-btn">&times;</span>
     <div class="swiper">
@@ -267,17 +252,14 @@
       robbie3: ["RobbieSmall7_web.jpg","RobbieSmall8_web.jpg"],
       parker: ["ParkerSmall1_web.jpg","ParkerSmall2_web.jpg","ParkerSmall3_web.jpg","ParkerSmall4_web.jpg","ParkerSmall5_web.jpg"]
     };
-
     const lightbox = document.getElementById("lightbox");
     const closeBtn = document.querySelector(".close-btn");
     const swiperWrapper = document.querySelector(".swiper-wrapper");
     let swiper;
-
     document.querySelectorAll(".thumb").forEach(thumb => {
       thumb.addEventListener("click", () => {
         const groupKey = thumb.getAttribute("data-group");
         const images = groups[groupKey];
-
         swiperWrapper.innerHTML = "";
         images.forEach(src => {
           const slide = document.createElement("div");
@@ -285,9 +267,7 @@
           slide.innerHTML = `<img src="${src}" alt="">`;
           swiperWrapper.appendChild(slide);
         });
-
         lightbox.classList.add("active");
-
         if (swiper) swiper.destroy(true, true);
         swiper = new Swiper(".swiper", {
           slidesPerView: 1.2,
@@ -300,11 +280,9 @@
         });
       });
     });
-
     closeBtn.addEventListener("click", () => {
       lightbox.classList.remove("active");
     });
-
     lucide.createIcons();
   </script>
 </body>
