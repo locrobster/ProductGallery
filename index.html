@@ -1,3 +1,5 @@
+<!-- LocRobster Studios v2 — Updated banner transparency and gallery background -->
+<!-- Version: v2 | Built October 2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,26 +7,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Official site for LocRobster Studios — original art, apparel, and design.">
-  <meta property="og:title" content="LocRobster Studios">
-  <meta property="og:description" content="Original art, apparel, and design — explore the creative world of LocRobster Studios.">
-  <meta property="og:image" content="https://locrobster.com/mainbanner.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://locrobster.com">
-  <meta property="og:see_also" content="https://www.tiktok.com/@locrobster?_t=ZP-90IGAsnqnbr&_r=1">
-  <meta property="og:see_also" content="https://www.instagram.com/locrobster_studios/?igsh=MTkyMHVzcXptY21ubA%3D%3D&utm_source=qr">
-  <meta property="og:see_also" content="https://www.youtube.com/@LocRobster">
-  <meta property="og:see_also" content="https://x.com/locrobster?s=21">
-  <meta property="og:see_also" content="https://www.twitch.tv/locrobster">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LocRobster Studios">
-  <meta name="twitter:description" content="Original art, apparel, and design — explore the creative world of LocRobster Studios.">
-  <meta name="twitter:image" content="https://locrobster.com/mainbanner.png">
-  <meta name="twitter:url" content="https://locrobster.com">
   <title>LocRobster Studios</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-
     :root{
       --bg1:#5a19a0; --bg2:#332b80; --bg3:#101037;
       --glass-bg: rgba(255,255,255,0.12);
@@ -37,7 +23,6 @@
       background: linear-gradient(to bottom right, var(--bg1), var(--bg2), var(--bg3));
       color: var(--text);
       margin: 0;
-      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -52,7 +37,7 @@
     .banner::before{
       content:"";
       position:absolute; inset:0;
-      background: var(--glass-bg-strong);
+      background: rgba(255,255,255,0.08);
       backdrop-filter: blur(16px) saturate(160%);
       -webkit-backdrop-filter: blur(16px) saturate(160%);
       border: 1px solid var(--glass-border);
@@ -65,11 +50,9 @@
       pointer-events:none;
     }
     .button-container {
-      position: relative;
       border-radius: 28px;
       background: var(--glass-bg);
       backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
       border: 1px solid var(--glass-border);
       padding: 22px 36px;
       margin: 40px 0 24px;
@@ -86,22 +69,16 @@
       border-radius: 26px;
       background: rgba(255,255,255,0.22);
       backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
       border: 1px solid var(--glass-border);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
       transition: transform .2s ease, background .2s ease;
       text-transform: uppercase;
       letter-spacing: .6px;
     }
     .frosted-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.3); }
     .glass-frame {
-      position: relative;
       border-radius: 28px;
-      background: var(--glass-bg);
+      background: url('container1bkgnd.png') center/cover no-repeat, rgba(255,255,255,0.12);
       backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
       border: 1px solid var(--glass-border);
       padding: 28px;
       display: grid;
@@ -110,44 +87,29 @@
       gap: 22px;
       width: min(90vw, 880px);
       height: min(90vh, 880px);
-      overflow: hidden;
       margin: 8px 0 40px;
     }
     .thumb { border-radius: 18px; overflow: hidden; cursor: pointer; }
     .thumb img { width:100%; height:100%; object-fit: cover; border-radius: inherit; transition: transform .25s ease; }
     .thumb:hover img { transform: scale(1.03); }
-    .lightbox { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center; backdrop-filter: blur(10px); }
-    .lightbox.active { display:flex; }
-    .swiper { width:90%; max-width:1000px; height:80%; }
-    .swiper-slide { display:flex; align-items:center; justify-content:center; }
-    .swiper-slide img { max-width:100%; max-height:100%; border-radius: 16px; }
     .footer{
       width:100%;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      display:flex; flex-direction:column; align-items:center;
       padding: 22px 16px 30px;
       background: rgba(255,255,255,0.10);
       backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
       border-top: 1px solid rgba(255,255,255,0.22);
       box-shadow: 0 0 40px rgba(150,100,255,0.35) inset, 0 -8px 28px rgba(150,100,255,0.25);
       gap:12px;
       margin-top: 24px;
     }
     .socials{ display:flex; gap:18px; }
-    .icon svg{ transition: filter .2s ease, transform .2s ease; }
-    .icon:hover svg{ transform: translateY(-2px); }
-    .icon.tiktok:hover svg{ fill:#69C9D0; filter: drop-shadow(0 0 6px rgba(105,201,208,.6)); }
-    .icon.instagram:hover svg{ stroke:#E1306C; filter: drop-shadow(0 0 6px rgba(225,48,108,.6)); }
-    .icon.youtube:hover svg{ fill:#FF0000; filter: drop-shadow(0 0 6px rgba(255,0,0,.6)); }
-    .icon.x:hover svg{ fill:#1D9BF0; filter: drop-shadow(0 0 6px rgba(29,155,240,.6)); }
-    .icon.twitch:hover svg{ fill:#9146FF; filter: drop-shadow(0 0 6px rgba(145,70,255,.6)); }
-    .copyright{ font-family: Georgia, 'Times New Roman', serif; font-size:.9rem; opacity:.9; margin-top:6px; }
+    .copyright{ font-family: Georgia, serif; font-size:.9rem; opacity:.9; margin-top:6px; }
     @media (max-width: 768px){
       .button-container{ gap:16px; padding:16px 18px; }
       .frosted-btn{ width: 70%; justify-content:center; }
       .glass-frame{ width:95vw; height:auto; padding:18px; gap:16px; }
     }
-
   </style>
 </head>
 <body>
@@ -160,63 +122,21 @@
     <a href="socials.html" class="frosted-btn">🌐 Socials</a>
   </div>
   <div class="glass-frame">
-    <div class="thumb" data-group="robbie1"><img src="RobbieSmall1_thumb.jpg" alt="Robbie 1 Thumbnail"></div>
-    <div class="thumb" data-group="robbie2"><img src="RobbieSmall3_thumb.jpg" alt="Robbie 2 Thumbnail"></div>
-    <div class="thumb" data-group="robbie3"><img src="RobbieSmall7_thumb.jpg" alt="Robbie 3 Thumbnail"></div>
-    <div class="thumb" data-group="parker"><img src="ParkerSmall1_thumb.jpg" alt="Parker Thumbnail"></div>
+    <div class="thumb" data-group="robbie1"><img src="RobbieSmall1_thumb.jpg" alt=""></div>
+    <div class="thumb" data-group="robbie2"><img src="RobbieSmall3_thumb.jpg" alt=""></div>
+    <div class="thumb" data-group="robbie3"><img src="RobbieSmall7_thumb.jpg" alt=""></div>
+    <div class="thumb" data-group="parker"><img src="ParkerSmall1_thumb.jpg" alt=""></div>
   </div>
-
   <footer class="footer">
     <div class="socials">
-      <a href="https://www.tiktok.com/@locrobster?_t=ZP-90IGAsnqnbr&_r=1" target="_blank" rel="noopener noreferrer" class="icon tiktok"><svg viewBox="0 0 24 24" width="28" height="28" fill="#ffffff" aria-hidden="true"><path d="M16 3a5 5 0 0 0 4 4v3.1a8.5 8.5 0 0 1-4-.9v4.6a6 6 0 1 1-6-6c.3 0 .7 0 1 .1V11a3 3 0 1 0 3 3V3h2z"/></svg></a>
-      <a href="https://www.instagram.com/locrobster_studios/?igsh=MTkyMHVzcXptY21ubA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="icon instagram"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5" fill="#ffffff"/></svg></a>
-      <a href="https://www.youtube.com/@LocRobster" target="_blank" rel="noopener noreferrer" class="icon youtube"><svg viewBox="0 0 24 24" width="28" height="28" fill="#ffffff" aria-hidden="true"><path d="M23 7.5a4 4 0 0 0-2.8-2.9C18.5 4 12 4 12 4s-6.5 0-8.2.6A4 4 0 0 0 1 7.5 41 41 0 0 0 1 12a41 41 0 0 0 0 4.5 4 4 0 0 0 2.8 2.9C5.5 20 12 20 12 20s6.5 0 8.2-.6a4 4 0 0 0 2.8-2.9A41 41 0 0 0 23 12a41 41 0 0 0 0-4.5zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
-      <a href="https://x.com/locrobster?s=21" target="_blank" rel="noopener noreferrer" class="icon x"><svg viewBox="0 0 24 24" width="28" height="28" fill="#ffffff" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23 22h-7.1l-5.6-7.5L3.8 22H1l7.7-8.8L1 2h7.1l5.1 6.8L18.9 2zM16 20h1.8L8.1 4H6.3L16 20z"/></svg></a>
-      <a href="https://www.twitch.tv/locrobster" target="_blank" rel="noopener noreferrer" class="icon twitch"><svg viewBox="0 0 24 24" width="28" height="28" fill="#ffffff" aria-hidden="true"><path d="M4 3h16v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v11h4v2l2-2h4l2-2V5H6zm8 2h2v5h-2V7zm-5 0h2v5H9V7z"/></svg></a>
+      <a href="https://www.tiktok.com/@locrobster?_t=ZP-90IGAsnqnbr&_r=1" target="_blank">TikTok</a>
+      <a href="https://www.instagram.com/locrobster_studios/?igsh=MTkyMHVzcXptY21ubA%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@LocRobster" target="_blank">YouTube</a>
+      <a href="https://x.com/locrobster?s=21" target="_blank">X</a>
+      <a href="https://www.twitch.tv/locrobster" target="_blank">Twitch</a>
     </div>
     <div class="copyright">© 2025 LocRobster Studios. All Rights Reserved.</div>
   </footer>
-
-  <div id="lightbox" class="lightbox">
-    <div class="swiper">
-      <div class="swiper-wrapper"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </div>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    const groups = {
-      robbie1: ["RobbieSmall1_web.jpg","RobbieSmall2_web.jpg"],
-      robbie2: ["RobbieSmall3_web.jpg","RobbieSmall4_web.jpg","RobbieSmall5_web.jpg","RobbieSmall6_web.jpg"],
-      robbie3: ["RobbieSmall7_web.jpg","RobbieSmall8_web.jpg"],
-      parker: ["ParkerSmall1_web.jpg","ParkerSmall2_web.jpg","ParkerSmall3_web.jpg","ParkerSmall4_web.jpg","ParkerSmall5_web.jpg"]
-    };
-    const lightbox = document.getElementById("lightbox");
-    const swiperWrapper = document.querySelector(".swiper-wrapper");
-    let swiper;
-    document.querySelectorAll(".thumb").forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        const groupKey = thumb.getAttribute("data-group");
-        const images = groups[groupKey];
-        swiperWrapper.innerHTML = "";
-        images.forEach(src => {
-          const slide = document.createElement("div");
-          slide.className = "swiper-slide";
-          slide.innerHTML = `<img src="${src}" alt="">`;
-          swiperWrapper.appendChild(slide);
-        });
-        lightbox.style.display = "flex";
-        if (swiper) swiper.destroy(true, true);
-        swiper = new Swiper(".swiper", {
-          slidesPerView: 1.2,
-          centeredSlides: true,
-          spaceBetween: 20,
-          navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        });
-      });
-    });
-    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.style.display = "none"; });
-  </script>
 </body>
 </html>
+Were
