@@ -1,157 +1,112 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Gallery • LocRobster Studios</title>
-  
-  <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
-    :root{
-      --bg1:#5a19a0; --bg2:#332b80; --bg3:#101037; --text:#f7f8fb;
-    }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, var(--bg1), var(--bg2), var(--bg3));
-      color: var(--text);
+      background: linear-gradient(to bottom right, #3b0764, #1e1b4b, #000);
+      color: #f1f5f9;
       margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* === Clear Crystal Glass Banner === */
     .banner {
       width: 100%;
-      aspect-ratio: 1920 / 600;
+      height: 40vh;
+      min-height: 300px;
+      max-height: 500px;
+      background: url('mainbanner.jpg') center/cover no-repeat;
       position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 0;
-      backdrop-filter: blur(0px) saturate(200%);
-      -webkit-backdrop-filter: blur(0px) saturate(200%);
-      background-color: rgba(194, 200, 235, 0.34);
-      background-image: url('mainbanner.png');
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: overlay;
-      border: 1px solid rgba(209, 213, 219, 0.3);
-    }
-    .banner img {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
 
-    /* === Buttons === */
-    .button-container {
-      border-radius: 40px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 25px rgba(185,160,255,0.22);
-      padding: 30px 50px;
-      margin: 60px 0;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      z-index: 5;
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
     }
-    .frosted-btn {
+
+    .frosted-box {
       position: relative;
-      font-size: 1.2rem;
-      padding: 14px 30px;
+      margin: 80px auto;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(185, 160, 255, 0.22);
+      padding: 60px;
+      text-align: center;
+      width: min(90vw, 800px);
+      color: #fff;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 40px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       color: #fff;
       text-decoration: none;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.25);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border: 1px solid rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 1px;
+      backdrop-filter: blur(10px) saturate(150%);
+      -webkit-backdrop-filter: blur(10px) saturate(150%);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
     }
-    .frosted-btn svg { width: 22px; height: 22px; stroke-width: 2.5; }
-    .frosted-btn:hover { background: rgba(255,255,255,0.35); transform: translateY(-4px); }
 
-    /* === Clear Crystal Glass Thumbnail Container === */
-    .glass-frame {
-      position: relative;
-      border-radius: 40px;
-      backdrop-filter: blur(0px) saturate(200%);
-      -webkit-backdrop-filter: blur(0px) saturate(200%);
-      background-color: rgba(194, 200, 235, 0.34);
-      background-image: url('container1bkgnd.png');
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: overlay;
-      border: 1px solid rgba(209,213,219,0.3);
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 30px;
-      width: min(90vw, 880px);
-      height: min(90vh, 880px);
-      margin-top: 30px;
-      z-index: 5;
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(200, 150, 255, 0.4);
     }
-    .glass-frame > * { position: relative; z-index: 1; }
 
-    .thumb { cursor: pointer; overflow: hidden; border-radius: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .thumb img { width:100%; height:100%; object-fit: cover; border-radius: inherit; transition: transform 0.3s ease; }
-    .thumb:hover { transform: translateY(-6px) scale(1.02); }
-    .thumb:hover img { transform: scale(1.05); }
-
-    /* === Footer === */
-    .footer{
-      width:100%;
-      display:flex; flex-direction:column; align-items:center;
-      padding: 22px 16px 30px;
-      background: rgba(255,255,255,0.10);
-      backdrop-filter: blur(14px) saturate(160%);
-      border-top: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 0 40px rgba(150,100,255,0.35) inset, 0 -8px 28px rgba(150,100,255,0.25);
-      gap:12px;
-      margin-top: 24px;
+    .social-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin: 60px 0;
     }
-    .socials a { font-size: 1.6rem; color: var(--text); transition: transform .2s ease, color .2s ease; }
-    .socials a:hover { transform: translateY(-2px); color: #c9a9ff; }
-    .socials { display:flex; gap:18px; }
-    .copyright{ font-family: Georgia, serif; font-size:.9rem; opacity:.9; margin-top:6px; }
+
+    .social-card {
+      width: 444px;
+      height: 222px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 600px) {
+      .frosted-box { padding: 40px 20px; width: 90%; }
+      .social-card { width: 90%; height: 180px; }
+    }
   </style>
 </head>
 <body>
-  <div class="banner">
-    <img src="bannerlogo.png" alt="LocRobster Studios Banner Logo">
-  </div>
-  <div class="page-box">
+  <div class="banner"></div>
+
+  <div class="frosted-box">
     <h1>Expanded Gallery Coming Soon</h1>
-    <p>More artwork and immersive visuals will be added here soon. Check back to explore the full creative collection.</p>
-    <a class="back-btn" href="index.html">← Back to Home</a>
+    <p>More artwork and visual experiences will be added here soon. Stay tuned.</p>
+    <a href="index.html" class="back-btn">Back to Home</a>
   </div>
-  <footer class="footer">
-    <div class="socials">
-      <a href="https://www.tiktok.com/@locrobster" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/locrobster_studios" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@LocRobster" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://x.com/locrobster" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.twitch.tv/locrobster" target="_blank"><i class="fab fa-twitch"></i></a>
-    </div>
-    <div class="copyright">© 2025 LocRobster Studios. All Rights Reserved.</div>
-  </footer>
 </body>
 </html>
