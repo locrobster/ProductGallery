@@ -1,5 +1,3 @@
-<!-- LocRobster Studios v2 — Updated banner transparency and gallery background -->
-<!-- Version: v2 | Built October 2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,82 +7,25 @@
   <meta name="description" content="LocRobster Studios Gallery — artwork, designs, and visuals.">
   <title>Gallery • LocRobster Studios</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root{
-      --bg1:#5a19a0; --bg2:#332b80; --bg3:#101037;
-      --glass-bg: rgba(255,255,255,0.12);
-      --glass-bg-strong: rgba(255,255,255,0.15);
-      --glass-border: rgba(255,255,255,0.28);
-      --text:#f7f8fb;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, var(--bg1), var(--bg2), var(--bg3));
-      color: var(--text);
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .banner {
-      width: 100%;
-      aspect-ratio: 1920 / 600;
-      position: relative;
-      background: url('mainbanner.png') center/cover no-repeat;
-      overflow: hidden;
-    }
-    .banner::before{
-      content:"";
-      position:absolute; inset:0;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
-      border: 1px solid var(--glass-border);
-    }
-    .banner img{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit: cover;
-      z-index:2;
-      pointer-events:none;
-    }
-    .page-box{
-      border-radius: 28px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px) saturate(160%);
-      border: 1px solid var(--glass-border);
-      padding: 36px;
-      width: min(90vw, 800px);
-      margin: 40px 0;
-      text-align: center;
-    }
-    h1 { font-size: 2rem; margin-bottom: 16px; }
-    p { font-size: 1.1rem; opacity: 0.9; }
-    .back-btn{
-      display:inline-block; margin-top:18px; padding:10px 22px; border-radius:24px;
-      background: rgba(255,255,255,0.22); color:var(--text); text-decoration:none;
-      border:1px solid var(--glass-border); transition: background .2s ease;
-    }
-    .back-btn:hover{ background: rgba(255,255,255,0.3); }
-    .footer{
-      width:100%;
-      display:flex; flex-direction:column; align-items:center;
-      padding: 22px 16px 30px;
-      background: rgba(255,255,255,0.10);
-      backdrop-filter: blur(14px) saturate(160%);
-      border-top: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 0 40px rgba(150,100,255,0.35) inset, 0 -8px 28px rgba(150,100,255,0.25);
-      gap:12px;
-      margin-top: 24px;
-    }
-    .socials{ display:flex; gap:18px; }
-    .copyright{ font-family: Georgia, serif; font-size:.9rem; opacity:.9; margin-top:6px; }
+    :root{--bg1:#5a19a0;--bg2:#332b80;--bg3:#101037;--glass-bg:rgba(255,255,255,0.12);--glass-border:rgba(255,255,255,0.28);--text:#f7f8fb;}
+    body{font-family:'Inter',sans-serif;background:linear-gradient(to bottom right,var(--bg1),var(--bg2),var(--bg3));color:var(--text);margin:0;display:flex;flex-direction:column;align-items:center;}
+    .banner{width:100%;aspect-ratio:1920/600;position:relative;background:url('mainbanner.png')center/cover no-repeat;overflow:hidden;display:flex;justify-content:center;align-items:center;}
+    .banner::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,0.15);backdrop-filter:blur(20px)saturate(160%);-webkit-backdrop-filter:blur(20px)saturate(160%);border:1px solid rgba(255,255,255,0.25);z-index:1;}
+    .banner img{position:relative;z-index:2;width:auto;height:70%;object-fit:contain;pointer-events:none;}
+    .page-box{border-radius:28px;background:var(--glass-bg);backdrop-filter:blur(16px)saturate(160%);border:1px solid var(--glass-border);padding:36px;width:min(90vw,800px);margin:40px 0;text-align:center;}
+    h1{font-size:2rem;margin-bottom:16px;}p{font-size:1.1rem;opacity:0.9;}
+    .back-btn{display:inline-block;margin-top:18px;padding:10px 22px;border-radius:24px;background:rgba(255,255,255,0.22);color:var(--text);text-decoration:none;border:1px solid var(--glass-border);transition:background .2s ease;}
+    .back-btn:hover{background:rgba(255,255,255,0.3);}
+    .footer{width:100%;display:flex;flex-direction:column;align-items:center;padding:22px 16px 30px;background:rgba(255,255,255,0.10);backdrop-filter:blur(14px)saturate(160%);border-top:1px solid rgba(255,255,255,0.22);box-shadow:0 0 40px rgba(150,100,255,0.35)inset,0 -8px 28px rgba(150,100,255,0.25);gap:12px;margin-top:24px;}
+    .socials a{font-size:1.6rem;color:var(--text);transition:transform .2s ease,color .2s ease;}
+    .socials a:hover{transform:translateY(-2px);color:#c9a9ff;}
+    .socials{display:flex;gap:18px;}.copyright{font-family:Georgia,serif;font-size:.9rem;opacity:.9;margin-top:6px;}
   </style>
 </head>
 <body>
-  <div class="banner">
-    <img src="bannerlogo.png" alt="LocRobster Banner Logo">
-  </div>
+  <div class="banner"><img src="bannerlogo.png" alt="LocRobster Banner Logo"></div>
   <div class="page-box">
     <h1>Expanded Gallery Coming Soon</h1>
     <p>More artwork and immersive visuals will be added here soon. Check back to explore the full creative collection.</p>
@@ -92,11 +33,11 @@
   </div>
   <footer class="footer">
     <div class="socials">
-      <a href="https://www.tiktok.com/@locrobster?_t=ZP-90IGAsnqnbr&_r=1" target="_blank">TikTok</a>
-      <a href="https://www.instagram.com/locrobster_studios/?igsh=MTkyMHVzcXptY21ubA%3D%3D&utm_source=qr" target="_blank">Instagram</a>
-      <a href="https://www.youtube.com/@LocRobster" target="_blank">YouTube</a>
-      <a href="https://x.com/locrobster?s=21" target="_blank">X</a>
-      <a href="https://www.twitch.tv/locrobster" target="_blank">Twitch</a>
+      <a href="https://www.tiktok.com/@locrobster" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/locrobster_studios" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@LocRobster" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://x.com/locrobster" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.twitch.tv/locrobster" target="_blank"><i class="fab fa-twitch"></i></a>
     </div>
     <div class="copyright">© 2025 LocRobster Studios. All Rights Reserved.</div>
   </footer>
