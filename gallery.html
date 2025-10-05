@@ -10,46 +10,113 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root{--bg1:#5a19a0; --bg2:#332b80; --bg3:#101037; --text:#f7f8fb;}
-    body{font-family:'Inter',sans-serif;background:linear-gradient(to bottom right,var(--bg1),var(--bg2),var(--bg3));color:var(--text);margin:0;display:flex;flex-direction:column;align-items:center;}
-    
+    :root{
+      --bg1:#5a19a0; --bg2:#332b80; --bg3:#101037; --text:#f7f8fb;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, var(--bg1), var(--bg2), var(--bg3));
+      color: var(--text);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* === Clear Crystal Glass Banner === */
     .banner {
       width: 100%;
       aspect-ratio: 1920 / 600;
       position: relative;
-      background: url('mainbanner.png') center/cover no-repeat;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 0;
+      backdrop-filter: blur(0px) saturate(200%);
+      -webkit-backdrop-filter: blur(0px) saturate(200%);
+      background-color: rgba(194, 200, 235, 0.34);
+      background-image: url('mainbanner.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      border: 1px solid rgba(209, 213, 219, 0.3);
     }
-    /* Glass overlay that matches thumbnail container */
-    .banner::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
-      border: 1px solid rgba(255,255,255,0.28);
-      z-index: 1;
-    }
-    /* Logo overlay, unblurred, exact same area */
     .banner img {
-      position: absolute;
-      inset: 0;
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* both images are 1920x600; scale together */
-      z-index: 2;
+      object-fit: cover;
       pointer-events: none;
     }
-    
-    .page-box{border-radius:28px;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px)saturate(160%);border:1px solid rgba(255,255,255,0.28);padding:36px;width:min(90vw,800px);margin:40px 0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:16px;}p{font-size:1.1rem;opacity:0.9;}
-    .back-btn{display:inline-block;margin-top:18px;padding:10px 22px;border-radius:24px;background:rgba(255,255,255,0.22);color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,0.28);transition:background .2s ease;}
-    .back-btn:hover{background:rgba(255,255,255,0.3);}
-    
+
+    /* === Buttons === */
+    .button-container {
+      border-radius: 40px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 25px rgba(185,160,255,0.22);
+      padding: 30px 50px;
+      margin: 60px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      z-index: 5;
+    }
+    .frosted-btn {
+      position: relative;
+      font-size: 1.2rem;
+      padding: 14px 30px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .frosted-btn svg { width: 22px; height: 22px; stroke-width: 2.5; }
+    .frosted-btn:hover { background: rgba(255,255,255,0.35); transform: translateY(-4px); }
+
+    /* === Clear Crystal Glass Thumbnail Container === */
+    .glass-frame {
+      position: relative;
+      border-radius: 40px;
+      backdrop-filter: blur(0px) saturate(200%);
+      -webkit-backdrop-filter: blur(0px) saturate(200%);
+      background-color: rgba(194, 200, 235, 0.34);
+      background-image: url('container1bkgnd.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      border: 1px solid rgba(209,213,219,0.3);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 30px;
+      width: min(90vw, 880px);
+      height: min(90vh, 880px);
+      margin-top: 30px;
+      z-index: 5;
+    }
+    .glass-frame > * { position: relative; z-index: 1; }
+
+    .thumb { cursor: pointer; overflow: hidden; border-radius: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .thumb img { width:100%; height:100%; object-fit: cover; border-radius: inherit; transition: transform 0.3s ease; }
+    .thumb:hover { transform: translateY(-6px) scale(1.02); }
+    .thumb:hover img { transform: scale(1.05); }
+
+    /* === Footer === */
     .footer{
       width:100%;
       display:flex; flex-direction:column; align-items:center;
@@ -61,22 +128,16 @@
       gap:12px;
       margin-top: 24px;
     }
-    .socials a {
-      font-size: 1.6rem;
-      color: #f7f8fb;
-      transition: transform .2s ease, color .2s ease;
-    }
-    .socials a:hover {
-      transform: translateY(-2px);
-      color: #c9a9ff;
-    }
-    .socials{ display:flex; gap:18px; }
+    .socials a { font-size: 1.6rem; color: var(--text); transition: transform .2s ease, color .2s ease; }
+    .socials a:hover { transform: translateY(-2px); color: #c9a9ff; }
+    .socials { display:flex; gap:18px; }
     .copyright{ font-family: Georgia, serif; font-size:.9rem; opacity:.9; margin-top:6px; }
-    
   </style>
 </head>
 <body>
-  <div class="banner"><img src="bannerlogo.png" alt="LocRobster Banner Logo"></div>
+  <div class="banner">
+    <img src="bannerlogo.png" alt="LocRobster Studios Banner Logo">
+  </div>
   <div class="page-box">
     <h1>Expanded Gallery Coming Soon</h1>
     <p>More artwork and immersive visuals will be added here soon. Check back to explore the full creative collection.</p>
