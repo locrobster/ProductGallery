@@ -20,9 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: filter 0.3s ease;
     }
-    body.blurred { filter: blur(6px) brightness(0.9); }
 
     .banner {
       width: 100%;
@@ -82,11 +80,14 @@
     /* Lightbox */
     .lightbox {
       display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      background:rgba(50,0,80,0.75); backdrop-filter:blur(8px);
-      justify-content:center; align-items:center; z-index:999;
-      opacity:0; transition:opacity 0.2s ease;
+      justify-content:center; align-items:center; z-index:1000; opacity:0; transition:opacity 0.2s ease;
     }
     .lightbox.active { display:flex; opacity:1; }
+    .lightbox::before {
+      content:''; position:absolute; inset:0; background:rgba(50,0,80,0.75);
+      backdrop-filter:blur(8px); z-index:0;
+    }
+    .swiper { position:relative; z-index:1; }
     .swiper-slide { display:flex; justify-content:center; align-items:center; }
     .swiper-slide img {
       max-width:90vw; max-height:90vh; object-fit:contain;
@@ -94,15 +95,15 @@
       transition:transform 0.3s ease;
     }
     .close-btn {
-      position:fixed; top:20px; right:40px; color:white; font-size:2.5rem;
-      cursor:pointer; z-index:1001; text-shadow:0 0 12px rgba(255,255,255,0.9);
+      position:fixed; top:20px; right:40px; color:white; font-size:2.5rem; cursor:pointer;
+      z-index:2000; text-shadow:0 0 16px rgba(255,255,255,0.95);
       transition:transform 0.2s ease;
     }
     .close-btn:hover { transform:scale(1.2); }
     .swiper-button-next, .swiper-button-prev {
       color:white;
-      filter:drop-shadow(0 0 8px rgba(255,255,255,0.7));
-      width:50px; height:50px; z-index:1001;
+      filter:drop-shadow(0 0 8px rgba(255,255,255,0.8));
+      width:50px; height:50px; z-index:2000;
     }
     .swiper-button-next::after, .swiper-button-prev::after { font-size:28px; }
     .footer {
@@ -177,7 +178,6 @@
           slide.innerHTML=`<img src="${src}" alt="">`;
           swiperWrapper.appendChild(slide);
         });
-        document.body.classList.add("blurred");
         lightbox.classList.add("active");
         if(swiper)swiper.destroy(true,true);
         swiper=new Swiper(".swiper",{
@@ -192,16 +192,8 @@
       });
     });
 
-    closeBtn.addEventListener("click",()=>{
-      lightbox.classList.remove("active");
-      setTimeout(()=>{document.body.classList.remove("blurred");},200);
-    });
-    document.addEventListener("keydown",(e)=>{
-      if(e.key==="Escape"){
-        lightbox.classList.remove("active");
-        setTimeout(()=>{document.body.classList.remove("blurred");},200);
-      }
-    });
+    closeBtn.addEventListener("click",()=>{lightbox.classList.remove("active");});
+    document.addEventListener("keydown",(e)=>{if(e.key==="Escape"){lightbox.classList.remove("active");}});
     lucide.createIcons();
   </script>
 </body>
