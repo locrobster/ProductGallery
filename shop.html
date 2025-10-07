@@ -4,129 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LocRobster Studios — Shop</title>
-  
-<style>
-:root {
-  --bg1: #0c001f;
-  --bg2: #12022b;
-  --bg3: #15001e;
-  --accent1: #b9a0ff;
-  --white: #ffffff;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%);
-  color: var(--white);
-}
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 30px;
-}
-.nav-buttons a {
-  padding: 14px 30px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-.nav-buttons a:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-.glass-section {
-  margin: 60px auto;
-  max-width: 1000px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(18px) saturate(160%);
-  border-radius: 30px;
-  padding: 50px;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
-.glass-section p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  text-align: center;
-  margin-bottom: 25px;
-}
-.info-text {
-  font-size: 0.95rem;
-  opacity: 0.95;
-  background: rgba(255,255,255,0.12);
-  border-radius: 15px;
-  padding: 20px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.1);
-}
-.info-text i { margin-right: 6px; color: var(--accent1); }
-.fullscreen-btn {
-  display: inline-block;
-  margin: 0 auto 40px auto;
-  padding: 14px 40px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  backdrop-filter: blur(10px) saturate(150%);
-  transition: all 0.3s ease;
-}
-.fullscreen-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(200, 150, 255, 0.3);
-}
-iframe {
-  width: 100%;
-  min-height: 600px;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-.email-btn {
-  display: inline-block;
-  padding: 14px 40px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  backdrop-filter: blur(10px) saturate(150%);
-  transition: all 0.3s ease;
-}
-.email-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(200, 150, 255, 0.3);
-}
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #0c001f;
+      --bg2: #12022b;
+      --bg3: #15001e;
+      --accent1: #b9a0ff;
+      --white: #ffffff;
+    }
 
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Button Container */
+    .button-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: -45px;
+      z-index: 10;
+    }
+
+    .frosted-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px) saturate(180%);
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+      letter-spacing: 0.5px;
+    }
+
+    .frosted-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(185, 160, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Glass Section */
+    .glass-section {
+      margin: 80px auto;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(18px) saturate(160%);
+      border-radius: 30px;
+      padding: 50px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .info-text {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 600px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+  </style>
 </head>
 <body>
-  <div class="banner">
-    <img src="bannerlogo.png" alt="LocRobster Studios Banner Logo">
-  </div>
-  
-<div class="nav-buttons">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</div>
 
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-container">
+      <div class="frosted-banner">
+        <img src="bannerlogo.png" alt="LocRobster Studios Logo" class="banner-logo" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="button-container">
+    <a href="index.html" class="frosted-btn">Home</a>
+    <a href="shop.html" class="frosted-btn">Shop</a>
+    <a href="gallery.html" class="frosted-btn">Gallery</a>
+    <a href="about.html" class="frosted-btn">About</a>
+    <a href="contact.html" class="frosted-btn">Contact</a>
+  </div>
+
+  <!-- Shop Section -->
   <div class="glass-section">
     <p><strong>Hey there!</strong> Thanks for taking the time to check out my shop. 
     If you're looking for something specific, I hope you find it. 
@@ -134,7 +123,7 @@ iframe {
     please reach out so I can look into adding it.</p>
 
     <div class="info-text">
-      <p><i class="fas fa-info-circle"></i>My shop is securely hosted by <strong>Printify</strong>. 
+      <p><strong>ℹ️ My shop is securely hosted by Printify.</strong><br>
       All orders and payments are safely processed through their checkout system. 
       You may be redirected there when completing your purchase.</p>
       <p>At any point, if you'd prefer to visit my full shop directly, 
@@ -142,20 +131,25 @@ iframe {
     </div>
 
     <div style="text-align:center;">
-      <a href="https://locrobsterstudios.printify.me/" target="_blank" class="fullscreen-btn">Open My Shop in Fullscreen</a>
+      <a href="https://locrobsterstudios.printify.me/" target="_blank" class="frosted-btn">Open My Shop in Fullscreen</a>
     </div>
 
     <iframe src="https://locrobsterstudios.printify.me/"></iframe>
   </div>
-  <footer class="footer">
-    <div class="socials">
-      <a href="https://www.tiktok.com/@locrobster" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/locrobster_studios" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@LocRobster" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://x.com/locrobster" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.twitch.tv/locrobster" target="_blank"><i class="fab fa-twitch"></i></a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="social-icons">
+        <a href="https://www.tiktok.com/@locrobster" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/locrobster_studios" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@LocRobster" target="_blank">YouTube</a>
+        <a href="https://x.com/locrobster" target="_blank">X</a>
+        <a href="https://www.twitch.tv/locrobster" target="_blank">Twitch</a>
+      </div>
+      <p>© 2025 LocRobster Studios. All Rights Reserved.</p>
     </div>
-    <div class="copyright">© 2025 LocRobster Studios. All Rights Reserved.</div>
   </footer>
+
 </body>
 </html>
