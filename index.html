@@ -1,148 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LocRobster Studios</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="graphics/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-    :root {--bg1:#4b1f9e;--bg2:#6a3db5;--bg3:#a153d5;--text:#f7f8fb;}
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, var(--bg1), var(--bg2), var(--bg3));
-      color: var(--text);
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .banner {
-      width: 100%;
-      aspect-ratio: 1920/600;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid rgba(209,213,219,0.3);
-      background-color: rgba(194,200,235,0.34);
-      background-image: url('mainbanner.png');
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: overlay;
-    }
-    .banner img {width:100%;height:100%;object-fit:cover;pointer-events:none;}
-    .button-container {
-      border-radius:40px;
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(20px) saturate(180%);
-      box-shadow:0 12px 28px rgba(0,0,0,0.5),0 0 25px rgba(185,160,255,0.22);
-      padding:28px 48px;margin:50px 0;display:flex;justify-content:center;gap:36px;flex-wrap:wrap;z-index:5;
-    }
-    .frosted-btn {
-      font-size:1.2rem;padding:14px 30px;color:#fff;text-decoration:none;border-radius:30px;
-      background:rgba(255,255,255,0.25);backdrop-filter:blur(12px) saturate(180%);
-      border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;gap:10px;
-      transition:all 0.3s ease;text-transform:uppercase;letter-spacing:1px;
-    }
-    .frosted-btn:hover {background:rgba(255,255,255,0.35);transform:translateY(-4px);}
-    .glass-frame {
-      position: relative;
-      border-radius: 40px;
-      backdrop-filter: blur(0px) saturate(200%);
-      background-color: rgba(194, 200, 235, 0.34);
-      background-image: url('container1bkgnd.png');
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: overlay;
-      border: 1px solid rgba(209,213,219,0.3);
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 30px;
-      width: min(90vw, 880px);
-      height: min(90vh, 880px);
-      margin-top: 30px;
-      z-index: 5;
-    }
-    .thumb { cursor:pointer; overflow:hidden; border-radius:20px; transition:transform 0.3s ease, box-shadow 0.3s ease; }
-    .thumb img { width:100%; height:100%; object-fit:cover; border-radius:inherit; transition:transform 0.3s ease; }
-    .thumb:hover { transform:translateY(-6px) scale(1.02); }
-    .thumb:hover img { transform:scale(1.05); }
-
-    /* Lightbox */
-    .lightbox {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      justify-content:center; align-items:center; z-index:1000; opacity:0; transition:opacity 0.2s ease;
-    }
-    .lightbox.active { display:flex; opacity:1; }
-    .lightbox::before {
-      content:''; position:absolute; inset:0; background:rgba(50,0,80,0.75);
-      backdrop-filter:blur(8px); z-index:0;
-    }
-    .swiper { position:relative; z-index:1; }
-    .swiper-slide { display:flex; justify-content:center; align-items:center; }
-    .swiper-slide img {
-      max-width:90vw; max-height:90vh; object-fit:contain;
-      border-radius:12px; box-shadow:0 0 30px rgba(0,0,0,0.6);
-      transition:transform 0.3s ease;
-    }
-    .close-btn {
-      position:fixed; top:20px; right:40px; color:white; font-size:2.5rem; cursor:pointer;
-      z-index:2000; text-shadow:0 0 16px rgba(255,255,255,0.95);
-      transition:transform 0.2s ease;
-    }
-    .close-btn:hover { transform:scale(1.2); }
-    .swiper-button-next, .swiper-button-prev {
-      color:white;
-      filter:drop-shadow(0 0 8px rgba(255,255,255,0.8));
-      width:50px; height:50px; z-index:2000;
-    }
-    .swiper-button-next::after, .swiper-button-prev::after { font-size:28px; }
-    .footer {
-      width:100%; display:flex; flex-direction:column; align-items:center;
-      padding:22px 16px 30px; background:rgba(255,255,255,0.10); backdrop-filter:blur(14px) saturate(160%);
-      border-top:1px solid rgba(255,255,255,0.22); box-shadow:0 0 40px rgba(150,100,255,0.35) inset,0 -8px 28px rgba(150,100,255,0.25);
-      gap:12px; margin-top:24px;
-    }
-    .socials a{font-size:1.6rem;color:var(--text);transition:transform .2s ease,color .2s ease;}
-    .socials a:hover{transform:translateY(-2px);color:#c9a9ff;}
-    .socials{display:flex;gap:18px;}
-    .copyright{font-family:Georgia,serif;font-size:.9rem;opacity:.9;margin-top:6px;}
-  </style>
 </head>
+
 <body>
-  <div class="banner"><img src="bannerlogo.png" alt="LocRobster Studios Banner Logo"></div>
+  <!-- Banner -->
+  <div class="banner cropped">
+    <img src="graphics/mainbanner.png" alt="Main Banner">
+    <img src="graphics/bannerlogo.png" alt="LocRobster Studios Logo">
+  </div>
+
+
+  <!-- Navigation Buttons -->
   <div class="button-container">
+    <span class="frosted-btn active"><i data-lucide="home"></i> Home</span>
     <a href="shop.html" class="frosted-btn"><i data-lucide="shopping-bag"></i> Shop</a>
     <a href="gallery.html" class="frosted-btn"><i data-lucide="image"></i> Gallery</a>
     <a href="about.html" class="frosted-btn"><i data-lucide="user"></i> About</a>
     <a href="contact.html" class="frosted-btn"><i data-lucide="mail"></i> Contact</a>
   </div>
-  <div class="glass-frame">
-    <div class="thumb" data-group="robbie1"><img src="RobbieSmall1_thumb.jpg" alt=""></div>
-    <div class="thumb" data-group="robbie2"><img src="RobbieSmall3_thumb.jpg" alt=""></div>
-    <div class="thumb" data-group="robbie3"><img src="RobbieSmall7_thumb.jpg" alt=""></div>
-    <div class="thumb" data-group="parker"><img src="ParkerSmall4_thumb.jpg" alt=""></div>
+
+<!-- === MINI RANDOM GALLERY (2×2) === -->
+<section class="glass-frame gallery-grid-mini">
+  <!-- Random art thumbnails will load here dynamically -->
+</section>
+
+ <!-- Gallery -->
+<div class="glass-frame lightbox-thumbs">
+  <div class="thumb">
+    <img src="images/thumbnails/robbie/RobbieSmall1_thumb.jpg" alt="">
+  </div>
+  <div class="thumb">
+    <img src="images/thumbnails/robbie/RobbieSmall3_thumb.jpg" alt="">
+  </div>
+  <div class="thumb">
+    <img src="images/thumbnails/robbie/RobbieSmall7_thumb.jpg" alt="">
+  </div>
+  <div class="thumb">
+    <img src="images/thumbnails/parker/ParkerSmall4_thumb.jpg" alt="">
+  </div>
+</div>
+
+
+ <!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <div class="swiper">
+    <div class="swiper-wrapper"></div>
+
+    <!-- ✅ ADD THESE TWO BUTTONS -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <span class="close-btn">&times;</span>
-    <div class="swiper">
-      <div class="swiper-wrapper"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </div>
+  <button class="close-btn" aria-label="Close">&times;</button>
+</div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="socials">
       <a href="https://www.tiktok.com/@locrobster" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -155,46 +77,6 @@
   </footer>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    const groups = {
-      robbie1: ["RobbieSmall1_web.jpg","RobbieSmall2_web.jpg"],
-      robbie2: ["RobbieSmall3_web.jpg","RobbieSmall4_web.jpg","RobbieSmall5_web.jpg","RobbieSmall6_web.jpg"],
-      robbie3: ["RobbieSmall7_web.jpg","RobbieSmall8_web.jpg"],
-      parker: ["ParkerSmall1_web.jpg","ParkerSmall2_web.jpg","ParkerSmall3_web.jpg","ParkerSmall4_web.jpg","ParkerSmall5_web.jpg"]
-    };
-    const lightbox=document.getElementById("lightbox");
-    const closeBtn=document.querySelector(".close-btn");
-    const swiperWrapper=document.querySelector(".swiper-wrapper");
-    let swiper;
-
-    document.querySelectorAll(".thumb").forEach(thumb=>{
-      thumb.addEventListener("click",()=>{
-        const groupKey=thumb.getAttribute("data-group");
-        const images=groups[groupKey];
-        swiperWrapper.innerHTML="";
-        images.forEach(src=>{
-          const slide=document.createElement("div");
-          slide.className="swiper-slide";
-          slide.innerHTML=`<img src="${src}" alt="">`;
-          swiperWrapper.appendChild(slide);
-        });
-        lightbox.classList.add("active");
-        if(swiper)swiper.destroy(true,true);
-        swiper=new Swiper(".swiper",{
-          slidesPerView:1,
-          centeredSlides:true,
-          spaceBetween:20,
-          effect:'fade',
-          fadeEffect:{crossFade:true},
-          navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},
-          keyboard:{enabled:true}
-        });
-      });
-    });
-
-    closeBtn.addEventListener("click",()=>{lightbox.classList.remove("active");});
-    document.addEventListener("keydown",(e)=>{if(e.key==="Escape"){lightbox.classList.remove("active");}});
-    lucide.createIcons();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
