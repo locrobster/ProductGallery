@@ -743,3 +743,59 @@ body {
     padding: 14px;
   }
 }
+
+/* === ROBBIE + PARKER GALLERY (lightbox-thumbs) FIX === */
+.lightbox-thumbs {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 layout */
+  gap: 18px;
+  width: 100%;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 18px;
+  height: auto; /* allow container to expand */
+  overflow: visible; /* prevent clipping */
+  background: rgba(194, 200, 235, 0.34);
+  background-image: url('graphics/container1bkgnd.png');
+  background-size: cover;
+  background-blend-mode: overlay;
+  border-radius: 32px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+              inset 0 0 25px rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px) saturate(180%);
+}
+
+.lightbox-thumbs .thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.lightbox-thumbs .thumb img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1; /* ✅ keeps thumbnails square */
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.lightbox-thumbs .thumb img:hover {
+  transform: scale(1.04);
+}
+
+/* 📱 Mobile: keep 2x2 grid, scale evenly */
+@media (max-width: 700px) {
+  .lightbox-thumbs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 14px;
+    max-width: 95%;
+  }
+
+  .lightbox-thumbs .thumb img {
+    border-radius: 14px;
+  }
+}
